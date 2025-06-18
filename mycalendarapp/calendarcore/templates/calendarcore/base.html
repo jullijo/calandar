@@ -1,9 +1,12 @@
-<!-- calendarcore/templates/calendarcore/base.html -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Work Calendar{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'calendarcore/calendar.css' %}">
     <style>
         body { font-family: sans-serif; padding: 20px; }
         .shift { border: 1px solid #ccc; padding: 10px; margin-bottom: 8px; }

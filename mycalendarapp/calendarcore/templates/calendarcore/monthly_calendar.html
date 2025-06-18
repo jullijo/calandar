@@ -1,0 +1,38 @@
+{% extends "calendarcore/base.html" %}
+{% load static %}
+{% load dict_filters %}
+
+{% block title %}{{ month_name }} {{ year }}{% endblock %}
+
+{% block content %}
+<h2 class="calendar-header">
+    <a href="{% url 'calendar_by_month' prev_year prev_month %}">⬅️</a>
+    {{ month_name }} {{ year }}
+    <a href="{% url 'calendar_by_month' next_year next_month %}">➡️</a>
+</h2>
+
+<div class="calendar">
+    <div class="calendar-row calendar-weekdays">
+        {% for day in day_names %}
+            <div class="calendar-cell calendar-weekday">{{ day }}</div>
+        {% endfor %}
+    </div>
+
+    {% for week in month_days %}
+    <div class="calendar-row">
+        {% for day in week %}
+        <div class="calendar-cell {% if day.month != month %}not-current{% endif %} {% if day == today %}today{% endif %}">
+            <div class="calendar-date">{{ day.day }}</div>
+            <div class="calendar-shifts">
+                {% for shift in shift_map|get_item:day %}
+                    <div class="shift">{{ shift.time_of_day|title }}: {{ shift.worker.name|default:"—" }}</div>
+                {% empty %}
+                    <div class="no-shift">No shifts</div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
