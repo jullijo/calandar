@@ -1,0 +1,15 @@
+{% extends "calendarcore/base.html" %}
+
+{% block title %}Weekly Schedule{% endblock %}
+
+{% block content %}
+    <h2>This Week's Shifts</h2>
+    {% for shift in shifts %}
+        <div class="shift">
+            <strong>{{ shift.date }}</strong> - {{ shift.time_of_day }} <br>
+            Assigned to: {{ shift.worker.name|default:"Unassigned" }}
+        </div>
+    {% empty %}
+        <p>No shifts scheduled.</p>
+    {% endfor %}
+{% endblock %}

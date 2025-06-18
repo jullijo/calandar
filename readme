@@ -1,0 +1,35 @@
+# 🗓️ Work Calendar App
+
+A custom calendar app built with Django for managing work schedules, including fixed weekday shifts and rotating weekend teams.
+
+## 🔧 Features
+
+- Fixed weekday staff scheduling (Monday–Thursday)
+- Rotating weekend teams (A, B, C, D) for Friday–Sunday
+- Morning and evening shift support
+- Admin panel for managing users and shifts
+- Django-based backend with REST API (in progress)
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone <your-repo-url>
+cd <your-project-folder>
+
+
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+
+pip install -r requirements.txt
+
+
+python manage.py makemigrations
+python manage.py migrate
+
+
+python manage.py createsuperuser
+
+python manage.py runserver

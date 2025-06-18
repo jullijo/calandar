@@ -1,0 +1,25 @@
+{% extends "calendarcore/base.html" %}
+
+{% block title %}Weekly Calendar{% endblock %}
+
+{% block content %}
+    <h2>Weekend Shift Calendar</h2>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Morning</th>
+                <th>Evening</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for day in days %}
+                <tr>
+                    <td>{{ day|date:"l, F j" }}</td>
+                    <td>{{ schedule.day.morning|default:"—" }}</td>
+                    <td>{{ schedule.day.evening|default:"—" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
